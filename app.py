@@ -10,7 +10,6 @@ def load_data():
     return pd.read_csv("Penilaian_Kinerja.csv")
 
 df = load_data()
-
 jabatan_col = 'Nama_Posisi'
 
 # Skor KPI Korporasi
@@ -35,7 +34,6 @@ def kategori_kpi(percentile):
 hasil_komparasi = []
 for idx, row in df.iterrows():
     nipp = row['NIPP_Pekerja']
-    nama = row['Nama_Pekerja'] if 'Nama_Pekerja' in df.columns else ""
     jabatan = row[jabatan_col] if jabatan_col in row else ""
     nipp_atasan = row['NIPP_Atasan']
     skor = row['Skor_KPI_Final']
@@ -61,11 +59,11 @@ for idx, row in df.iterrows():
 
 df_komparasi = pd.DataFrame(hasil_komparasi)
 
-# Tabel NIPP dan posisi per kategori distribusi
+# Tabel NIPP dan Nama_Posisi per kategori distribusi
 st.header("Daftar Pekerja per Kategori Distribusi Normal KPI")
 for kategori in ['Istimewa', 'Sangat Baik', 'Baik', 'Cukup', 'Kurang']:
     st.subheader(f"Kategori: {kategori}")
-    df_kat = df_komparasi[df_komparasi['Kategori_Distribusi'] == kategori][['NIPP', 'Nama', 'Nama_Posisi']]
+    df_kat = df_komparasi[df_komparasi['Kategori_Distribusi'] == kategori][['NIPP', 'Nama_Posisi']]
     if df_kat.empty:
         st.write("Tidak ada.")
     else:
@@ -99,9 +97,8 @@ st.header("Kurva Distribusi Normal KPI untuk Tiap Atasan Langsung (Group/Dept)")
 for nipp_atasan in df['NIPP_Atasan'].dropna().unique():
     if pd.isna(nipp_atasan) or nipp_atasan == '' or nipp_atasan not in df['NIPP_Pekerja'].values:
         continue
-    nama_atasan = df[df['NIPP_Pekerja'] == nipp_atasan][['Nama_Pekerja', jabatan_col]].iloc[0].to_dict()
-    nama_atasan_disp = f"{nama_atasan.get('Nama_Pekerja','')}, {nama_atasan.get(jabatan_col,'')}"
-    df_bawahan = df[df['NIPP_Atasan'] == nipp_atasan][['NIPP_Pekerja', 'Nama_Pekerja', jabatan_col, 'Skor_KPI_Final']]
+    jabatan_atasan = df[df['NIPP_Pekerja'] == nipp_atasan][jabatan_col].iloc[0]
+    df_bawahan = df[df['NIPP_Atasan'] == nipp_atasan][['NIPP_Pekerja', jabatan_col, 'Skor_KPI_Final']]
     if df_bawahan.empty:
         continue
     mean_local = df_bawahan['Skor_KPI_Final'].mean()
@@ -113,7 +110,7 @@ for nipp_atasan in df['NIPP_Atasan'].dropna().unique():
     ax.set_xlim(90, 110)
     ax.set_xlabel('Skor KPI')
     ax.set_ylabel('Densitas')
-    ax.set_title(f"Bawahan dari Atasan: {nama_atasan_disp}")
+    ax.set_title(f"Bawahan dari Atasan: {jabatan_atasan}")
     st.pyplot(fig)
 
 # Statistik ringkas
