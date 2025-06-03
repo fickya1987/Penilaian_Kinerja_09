@@ -4,7 +4,6 @@ import numpy as np
 from scipy.stats import norm, skew
 import matplotlib.pyplot as plt
 
-# Load data
 @st.cache_data
 def load_data():
     return pd.read_csv("Penilaian_Kinerja.csv")
@@ -12,7 +11,6 @@ def load_data():
 df = load_data()
 jabatan_col = 'Nama_Posisi'
 
-# Skor KPI Korporasi
 skor_korporasi = df['Skor_KPI_Final'].mean()
 mean_kpi = skor_korporasi
 std_kpi = df['Skor_KPI_Final'].std()
@@ -107,10 +105,21 @@ for nipp_atasan in df['NIPP_Atasan'].dropna().unique():
     x = np.linspace(90, 110, 1000)
     y = norm.pdf(x, mean_local, std_local)
     ax.plot(x, y, color='black', linewidth=2, label='Kurva Normal (bawahan)')
+    for label, color, low, high in [
+        ('Istimewa', 'gold', 0.9, 1.0),
+        ('Sangat Baik', 'green', 0.75, 0.9),
+        ('Baik', 'skyblue', 0.25, 0.75),
+        ('Cukup', 'orange', 0.10, 0.25),
+        ('Kurang', 'red', 0.0, 0.10)
+    ]:
+        x_fill = norm.ppf([low, high], mean_local, std_local)
+        mask = (x >= x_fill[0]) & (x <= x_fill[1])
+        ax.fill_between(x[mask], y[mask], alpha=0.25, color=color, label=label)
     ax.set_xlim(90, 110)
     ax.set_xlabel('Skor KPI')
     ax.set_ylabel('Densitas')
     ax.set_title(f"Bawahan dari Atasan: {jabatan_atasan}")
+    ax.legend()
     st.pyplot(fig)
 
 # Statistik ringkas
