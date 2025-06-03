@@ -11,18 +11,14 @@ def load_data():
 
 df = load_data()
 
-# Pastikan kolom jabatan ada dan konsisten
 jabatan_col = 'Jabatan' if 'Jabatan' in df.columns else 'Posisi'
 
-# 1. Skor KPI Korporasi (rata-rata seluruh pekerja)
+# Skor KPI Korporasi
 skor_korporasi = df['Skor_KPI_Final'].mean()
-
-# 2. Statistik distribusi untuk kategorisasi kurva normal
 mean_kpi = skor_korporasi
 std_kpi = df['Skor_KPI_Final'].std()
 skewness = skew(df['Skor_KPI_Final'])
 
-# 3. Siapkan kategori distribusi sesuai persentil (default mapping)
 def kategori_kpi(percentile):
     if percentile >= 0.9:
         return 'Istimewa'
@@ -35,7 +31,7 @@ def kategori_kpi(percentile):
     else:
         return 'Kurang'
 
-# 4. Siapkan tabel perbandingan atasan-bawahan
+# Hitung kategori & gap
 hasil_komparasi = []
 for idx, row in df.iterrows():
     nipp = row['NIPP_Pekerja']
@@ -43,22 +39,15 @@ for idx, row in df.iterrows():
     jabatan = row[jabatan_col] if jabatan_col in row else ""
     nipp_atasan = row['NIPP_Atasan']
     skor = row['Skor_KPI_Final']
-
-    # Gap dengan skor korporasi
     gap_vs_korporasi = (skor - skor_korporasi) / skor_korporasi
-
-    # Gap dengan atasan (jika ada)
     if nipp_atasan in df['NIPP_Pekerja'].values:
         skor_atasan = df[df['NIPP_Pekerja'] == nipp_atasan]['Skor_KPI_Final'].values[0]
         gap_vs_atasan = (skor - skor_atasan) / skor_atasan
     else:
         skor_atasan = np.nan
         gap_vs_atasan = np.nan
-
-    # Posisi skor di distribusi normal (percentile)
     percentile = norm.cdf(skor, loc=mean_kpi, scale=std_kpi)
     kategori = kategori_kpi(percentile)
-
     hasil_komparasi.append({
         'NIPP': nipp,
         'Nama': nama,
@@ -73,13 +62,19 @@ for idx, row in df.iterrows():
 
 df_komparasi = pd.DataFrame(hasil_komparasi)
 
-# 5. Statistik distribusi
-distribusi = df_komparasi['Kategori_Distribusi'].value_counts(normalize=True).reindex(
-    ['Istimewa', 'Sangat Baik', 'Baik', 'Cukup', 'Kurang']
-).fillna(0) * 100
+# Tabel NIPP dan posisi per kategori distribusi
+st.header("Daftar Pekerja per Kategori Distribusi Normal KPI")
+for kategori in ['Istimewa', 'Sangat Baik', 'Baik', 'Cukup', 'Kurang']:
+    st.subheader(f"Kategori: {kategori}")
+    df_kat = df_komparasi[df_komparasi['Kategori_Distribusi'] == kategori][['NIPP', 'Nama', 'Jabatan']]
+    if df_kat.empty:
+        st.write("Tidak ada.")
+    else:
+        st.dataframe(df_kat)
 
-# 6. Visualisasi kurva distribusi normal
-fig, ax = plt.subplots(figsize=(12, 5))
+# Visualisasi kurva korporasi (umum)
+st.header("Kurva Distribusi Normal KPI Seluruh Pegawai (Korporasi/Pelindo)")
+fig, ax = plt.subplots(figsize=(12, 4))
 x = np.linspace(90, 110, 1000)
 y = norm.pdf(x, mean_kpi, std_kpi)
 ax.plot(x, y, color='black', linewidth=2, label='Kurva Normal')
@@ -93,18 +88,45 @@ for label, color, low, high in [
     x_fill = norm.ppf([low, high], mean_kpi, std_kpi)
     mask = (x >= x_fill[0]) & (x <= x_fill[1])
     ax.fill_between(x[mask], y[mask], alpha=0.25, color=color, label=label)
+ax.set_xlim(90, 110)
 ax.set_xlabel('Skor KPI')
 ax.set_ylabel('Densitas')
 ax.set_title('Kurva Distribusi Normal Skor KPI Pegawai Pelindo')
 ax.legend()
+st.pyplot(fig)
 
-# === Streamlit output ===
-st.subheader("Statistik Distribusi Skor KPI Pegawai Pelindo")
+# Visualisasi kurva untuk tiap atasan langsung (group head/department head) beserta bawahan
+st.header("Kurva Distribusi Normal KPI untuk Tiap Atasan Langsung (Group/Dept)")
+for nipp_atasan in df['NIPP_Atasan'].dropna().unique():
+    if pd.isna(nipp_atasan) or nipp_atasan == '' or nipp_atasan not in df['NIPP_Pekerja'].values:
+        continue
+    nama_atasan = df[df['NIPP_Pekerja'] == nipp_atasan][['Nama_Pekerja', jabatan_col]].iloc[0].to_dict()
+    nama_atasan_disp = f"{nama_atasan.get('Nama_Pekerja','')}, {nama_atasan.get(jabatan_col,'')}"
+    df_bawahan = df[df['NIPP_Atasan'] == nipp_atasan][['NIPP_Pekerja', 'Nama_Pekerja', jabatan_col, 'Skor_KPI_Final']]
+    if df_bawahan.empty:
+        continue
+    mean_local = df_bawahan['Skor_KPI_Final'].mean()
+    std_local = df_bawahan['Skor_KPI_Final'].std()
+    fig, ax = plt.subplots(figsize=(12, 3))
+    x = np.linspace(90, 110, 1000)
+    y = norm.pdf(x, mean_local, std_local)
+    ax.plot(x, y, color='black', linewidth=2, label='Kurva Normal (bawahan)')
+    ax.set_xlim(90, 110)
+    ax.set_xlabel('Skor KPI')
+    ax.set_ylabel('Densitas')
+    ax.set_title(f"Bawahan dari Atasan: {nama_atasan_disp}")
+    st.pyplot(fig)
+
+# Statistik ringkas
+st.header("Statistik Distribusi Seluruh Pegawai")
 st.markdown(f"- **Rata-rata (Korporasi/Pelindo):** {mean_kpi:.2f}")
 st.markdown(f"- **Standard Deviasi:** {std_kpi:.2f}")
 st.markdown(f"- **Skewness:** {skewness:.2f}")
-st.markdown("### Tabel Hasil Perbandingan Atasan vs Bawahan vs Korporasi")
-st.dataframe(df_komparasi)
-st.markdown("### Sebaran Kategori Distribusi Normal (Persentase)")
+
+# Sebaran kategori (tabel persentase)
+st.markdown("### Sebaran Persentase Kategori Distribusi Normal")
+distribusi = df_komparasi['Kategori_Distribusi'].value_counts(normalize=True).reindex(
+    ['Istimewa', 'Sangat Baik', 'Baik', 'Cukup', 'Kurang']
+).fillna(0) * 100
 st.table(distribusi.reset_index().rename(columns={'index':'Kategori','Kategori_Distribusi':'Persentase (%)'}))
-st.pyplot(fig)
+
