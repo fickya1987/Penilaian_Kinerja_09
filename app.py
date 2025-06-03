@@ -11,7 +11,7 @@ def load_data():
 
 df = load_data()
 
-jabatan_col = 'Jabatan' if 'Jabatan' in df.columns else 'Posisi'
+jabatan_col = 'Nama_Posisi'
 
 # Skor KPI Korporasi
 skor_korporasi = df['Skor_KPI_Final'].mean()
@@ -50,8 +50,7 @@ for idx, row in df.iterrows():
     kategori = kategori_kpi(percentile)
     hasil_komparasi.append({
         'NIPP': nipp,
-        'Nama': nama,
-        'Jabatan': jabatan,
+        'Nama_Posisi': jabatan,
         'NIPP_Atasan': nipp_atasan,
         'Skor_KPI_Final': skor,
         'Skor_KPI_Atasan': skor_atasan,
@@ -66,7 +65,7 @@ df_komparasi = pd.DataFrame(hasil_komparasi)
 st.header("Daftar Pekerja per Kategori Distribusi Normal KPI")
 for kategori in ['Istimewa', 'Sangat Baik', 'Baik', 'Cukup', 'Kurang']:
     st.subheader(f"Kategori: {kategori}")
-    df_kat = df_komparasi[df_komparasi['Kategori_Distribusi'] == kategori][['NIPP', 'Nama', 'Jabatan']]
+    df_kat = df_komparasi[df_komparasi['Kategori_Distribusi'] == kategori][['NIPP', 'Nama', 'Nama_Posisi']]
     if df_kat.empty:
         st.write("Tidak ada.")
     else:
@@ -129,4 +128,3 @@ distribusi = df_komparasi['Kategori_Distribusi'].value_counts(normalize=True).re
     ['Istimewa', 'Sangat Baik', 'Baik', 'Cukup', 'Kurang']
 ).fillna(0) * 100
 st.table(distribusi.reset_index().rename(columns={'index':'Kategori','Kategori_Distribusi':'Persentase (%)'}))
-
