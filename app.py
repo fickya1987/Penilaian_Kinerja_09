@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 @st.cache_data
 def load_data():
-    return pd.read_csv("Penilaian_Kinerja_03.csv")
+    return pd.read_csv("Penilaian_Kinerja.csv")
 
 df = load_data()
 jabatan_col = 'Nama_Posisi'
