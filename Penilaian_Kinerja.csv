@@ -1,0 +1,106 @@
+NIPP_Pekerja,Nama_Posisi,NIPP_Atasan,Nama_Posisi_Atasan,Skor_KPI_Final
+100000,Pelindo,100000,Pelindo,106
+100001,Direktur Utama,100000,Pelindo,108
+105853,Group Head Transformasi Korporasi dan Manajemen Program,100001,Direktur Utama,107
+101958,Group Head Sekretariat Perusahaan,100001,Direktur Utama,106
+20538,Group Head Satuan Pengawasan Intern,100001,Direktur Utama,105
+103268,Group Head Hukum,100001,Direktur Utama,108
+110457,Department Head Manajemen Perubahan,105853,Group Head Transformasi Korporasi dan Manajemen Program,103
+110284,Department Head Monitoring Inisiatif Strategis,105853,Group Head Transformasi Korporasi dan Manajemen Program,107
+111262,Department Head Perencanaan Inisiatif Strategis,105853,Group Head Transformasi Korporasi dan Manajemen Program,100
+111900,Senior Officer I Monitoring Inisiatif Strategis,105018,Department Head Monitoring Inisiatif Strategis,106.5
+111754,Senior Officer I Monitoring Inisiatif Strategis,105018,Department Head Monitoring Inisiatif Strategis,107.333
+111778,Officer II Monitoring Inisiatif Strategis,105018,Department Head Monitoring Inisiatif Strategis,106.778
+107316,Principle Project II,105018,Department Head Monitoring Inisiatif Strategis,110
+109766,Senior Officer I Monitoring Inisiatif Strategis,105018,Department Head Monitoring Inisiatif Strategis,106.167
+110457,Senior Officer III Manajemen Perubahan,110457,Department Head Manajemen Perubahan,105
+111877,Senior Officer I Perencanaan Inisiatif Strategis,111262,Department Head Perencanaan Inisiatif Strategis,105.5
+112145,Senior Officer I Perencanaan Inisiatif Strategis,111262,Department Head Perencanaan Inisiatif Strategis,105.929
+112269,Senior Officer III Perencanaan Inisiatif Strategis,111262,Department Head Perencanaan Inisiatif Strategis,106
+112268,Senior Officer III Perencanaan Inisiatif Strategis,111262,Department Head Perencanaan Inisiatif Strategis,106
+108709,Department Head Hubungan Lembaga dan Investor,101958,Group Head Sekretariat Perusahaan,101.113
+110579,Department Head Manajemen Kesekretariatan,101958,Group Head Sekretariat Perusahaan,107.525
+110491,Department Head Tanggung Jawab Sosial dan Lingkungan,101958,Group Head Sekretariat Perusahaan,105.5
+109436,Department Head Komunikasi Korporasi,101958,Group Head Sekretariat Perusahaan,108.8
+111662,Senior Officer I Hubungan Lembaga dan Investor,108709,Department Head Hubungan Lembaga dan Investor,110
+111774,Senior Officer III Hubungan Lembaga dan Investor,108709,Department Head Hubungan Lembaga dan Investor,109.214
+111213,Personal Assistant Direksi,110579,Department Head Manajemen Kesekretariatan,109.203
+109830,Junior Officer I Manajemen Kesekretariatan,110579,Department Head Manajemen Kesekretariatan,110
+112507,Junior Officer III Manajemen Kesekretariatan,110579,Department Head Manajemen Kesekretariatan,109.571
+111781,Personal Assistant Direksi,110579,Department Head Manajemen Kesekretariatan,105.5
+107306,Sekretaris II,110579,Department Head Manajemen Kesekretariatan,110
+112311,Sekretaris II,110579,Department Head Manajemen Kesekretariatan,107
+112351,Junior Officer II Manajemen Kesekretariatan,110579,Department Head Manajemen Kesekretariatan,106.5
+110482,Officer II Manajemen Kesekretariatan,110579,Department Head Manajemen Kesekretariatan,109
+111493,Senior Officer I Manajemen Kesekretariatan,110579,Department Head Manajemen Kesekretariatan,109.613
+112081,Senior Officer III Manajemen Kesekretariatan,110579,Department Head Manajemen Kesekretariatan,107.956
+111743,Senior Officer III Manajemen Kesekretariatan,110579,Department Head Manajemen Kesekretariatan,107
+108372,Senior Officer III Manajemen Kesekretariatan,110579,Department Head Manajemen Kesekretariatan,109.857
+112280,Personal Assistant Direksi,110579,Department Head Manajemen Kesekretariatan,110
+111800,Personal Assistant Direksi,110579,Department Head Manajemen Kesekretariatan,107.429
+112443,Junior Sekretaris I,110579,Department Head Manajemen Kesekretariatan,110
+112086,Personal Assistant Direksi,110579,Department Head Manajemen Kesekretariatan,106
+111812,Personal Assistant Direksi,110579,Department Head Manajemen Kesekretariatan,110
+111475,Senior Sekretaris III,110579,Department Head Manajemen Kesekretariatan,106.714
+112873,Sekretaris I,110579,Department Head Manajemen Kesekretariatan,102.5
+113004,Personal Assistant Direksi,110579,Department Head Manajemen Kesekretariatan,107.236
+111327,Manager Monitoring dan Pelaporan Program,110491,Department Head Tanggung Jawab Sosial dan Lingkungan,102.847
+110286,Manager Perencanaan dan Pengelolaan program,110491,Department Head Tanggung Jawab Sosial dan Lingkungan,107.659
+111049,Officer II Komunikasi Korporasi,109436,Department Head Komunikasi Korporasi,108
+112998,Junior Officer III Komunikasi Korporasi,109436,Department Head Komunikasi Korporasi,108.812
+112015,Senior Officer I Komunikasi Korporasi,109436,Department Head Komunikasi Korporasi,108.5
+112304,Officer I Komunikasi Korporasi,109436,Department Head Komunikasi Korporasi,108
+109587,Senior Officer I Komunikasi Korporasi,109436,Department Head Komunikasi Korporasi,110
+111549,Expert I Audit,20538,Group Head Satuan Pengawasan Intern,105.5
+105719,Principle Expert III Audit,20538,Group Head Satuan Pengawasan Intern,104.5
+107271,Principle Expert III Audit,20538,Group Head Satuan Pengawasan Intern,106.5
+106300,Department Head Monitoring dan Evaluasi Pengawasan Intern,20538,Group Head Satuan Pengawasan Intern,106.3
+107707,Senior Expert I Audit,20538,Group Head Satuan Pengawasan Intern,109
+110058,Expert I Audit,20538,Group Head Satuan Pengawasan Intern,106.5
+106639,Senior Expert III Audit,20538,Group Head Satuan Pengawasan Intern,107.5
+108471,Expert I Audit,20538,Group Head Satuan Pengawasan Intern,107.75
+107915,Senior Expert III Audit,20538,Group Head Satuan Pengawasan Intern,106
+110447,Senior Expert III Audit,20538,Group Head Satuan Pengawasan Intern,106.011
+106352,Senior Expert III Audit,20538,Group Head Satuan Pengawasan Intern,103.5
+109614,Senior Expert I Audit,20538,Group Head Satuan Pengawasan Intern,106.5
+109251,Senior Expert I Audit,20538,Group Head Satuan Pengawasan Intern,105
+107219,Expert I Audit,20538,Group Head Satuan Pengawasan Intern,104.214
+106441,Principle Expert III Audit,20538,Group Head Satuan Pengawasan Intern,103
+106281,Principle Expert II Audit,20538,Group Head Satuan Pengawasan Intern,109.433
+107696,Senior Expert III Audit,20538,Group Head Satuan Pengawasan Intern,105
+109465,Manager ADM dan Hubungan Antar Lembaga Bidang Pengawasan,20538,Group Head Satuan Pengawasan Intern,106.303
+111603,Expert I Audit,20538,Group Head Satuan Pengawasan Intern,107
+112006,Expert III Audit,20538,Group Head Satuan Pengawasan Intern,107.2
+106644,Expert II Audit,20538,Group Head Satuan Pengawasan Intern,108.5
+110756,Expert II Audit,20538,Group Head Satuan Pengawasan Intern,105.546
+107039,Senior Expert I Audit,20538,Group Head Satuan Pengawasan Intern,106.5
+110235,Senior Expert I Audit,20538,Group Head Satuan Pengawasan Intern,109
+110955,Senior Expert I Audit,20538,Group Head Satuan Pengawasan Intern,106.5
+109695,Department Head Hukum Komersial,103268,Group Head Hukum,103.5
+106246,Staff Madya I Wakil Direktur,103268,Group Head Hukum,105.5
+110139,Department Head Hukum Korporasi,103268,Group Head Hukum,104.277
+110001,Department Head Litigasi,103268,Group Head Hukum,108
+112515,Manager Hukum Perizinan dan Kerjasama Bisnis,109695,Department Head Hukum Komersial,105.857
+111784,Manager Hukum Perusahaan,110139,Department Head Hukum Korporasi,106.277
+109688,Department Head Pengembangan Anak Perusahaan,103090,Group Head Manajemen Portofolio Anak Perusahaan,104.048
+108620,Department Head Pengelolaan Anak Perusahaan,103090,Group Head Manajemen Portofolio Anak Perusahaan,103.5
+112679,Senior Officer III Pengembangan Bisnis Anak Perusahaan,109688,Department Head Pengembangan Anak Perusahaan,101.444
+113000,Senior Officer III Pengembangan Bisnis Anak Perusahaan,109688,Department Head Pengembangan Anak Perusahaan,107.773
+112727,Senior Officer III Pengembangan Bisnis Anak Perusahaan,109688,Department Head Pengembangan Anak Perusahaan,101.634
+109688,Officer I Pengembangan Bisnis Anak Perusahaan,109688,Department Head Pengembangan Anak Perusahaan,104.048
+110782,Officer I Pengembangan Bisnis Anak Perusahaan,109688,Department Head Pengembangan Anak Perusahaan,102.596
+110353,Senior Officer I Pengembangan Bisnis Anak Perusahaan,109688,Department Head Pengembangan Anak Perusahaan,101.823
+112975,Junior Officer III Pengelolaan Anak Perusahaan,108620,Department Head Pengelolaan Anak Perusahaan,107
+112447,Senior Officer III Pengelolaan Anak Perusahaan,108620,Department Head Pengelolaan Anak Perusahaan,106.3
+111531,Officer II Pengelolaan Anak Perusahaan,108620,Department Head Pengelolaan Anak Perusahaan,103.5
+112975,Junior Officer III Pengelolaan Anak Perusahaan,108620,Department Head Pengelolaan Anak Perusahaan,107
+110213,Department Head Manajemen Risiko Non Operasional,102882,"Group Head Manajemen Risiko, Tata Kelola, dan Kepatuhan",107.5
+106384,Department Head Manajemen Risiko Operasional,102882,"Group Head Manajemen Risiko, Tata Kelola, dan Kepatuhan",109.5
+109161,Department Head Tata Kelola dan Kepatuhan,102882,"Group Head Manajemen Risiko, Tata Kelola, dan Kepatuhan",106.105
+112871,Junior Officer I Manajemen Risiko Non Operasional,110213,Department Head Manajemen Risiko Non Operasional,101.5
+111498,Officer II Manajemen Risiko Non Operasional,110213,Department Head Manajemen Risiko Non Operasional,103.429
+111385,Senior Officer I Manajemen Risiko Operasional,106384,Department Head Manajemen Risiko Operasional,110
+110509,Officer II Perencanaan dan Pengembangan Strategi Risiko,106384,Department Head Manajemen Risiko Operasional,110
+110502,Senior Officer III Tata Kelola dan Kepatuhan,109161,Department Head Tata Kelola dan Kepatuhan,107
+110616,Senior Officer I Tata Kelola dan Kepatuhan,109161,Department Head Tata Kelola dan Kepatuhan,107.553
+112126,Junior Officer I Tata Kelola dan Kepatuhan,109161,Department Head Tata Kelola dan Kepatuhan,104.181
