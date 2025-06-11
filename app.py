@@ -59,7 +59,7 @@ for idx, row in df.iterrows():
 df_komparasi = pd.DataFrame(hasil_komparasi)
 
 # --- TABEL GLOBAL (SELURUH KORPORASI) ---
-st.header("Daftar Pekerja per Kategori Distribusi Normal KPI (Seluruh Korporasi)")
+st.header("Daftar Pekerja per Kategori Distribusi Normal KPI (Pelindo Group - Direktorat Utama)")
 for kategori in ['Istimewa', 'Sangat Baik', 'Baik', 'Cukup', 'Kurang']:
     st.subheader(f"Kategori: {kategori}")
     df_kat = df_komparasi[df_komparasi['Kategori_Distribusi'] == kategori][['NIPP', 'Nama_Posisi', 'Skor_KPI_Final']]
@@ -69,7 +69,7 @@ for kategori in ['Istimewa', 'Sangat Baik', 'Baik', 'Cukup', 'Kurang']:
         st.dataframe(df_kat, hide_index=True)
 
 # --- KURVA GLOBAL (SELURUH KORPORASI) ---
-st.header("Kurva Distribusi Normal KPI Seluruh Pegawai (Korporasi/Pelindo)")
+st.header("Kurva Distribusi Normal KPI Seluruh Pegawai (Pelindo)")
 fig, ax = plt.subplots(figsize=(12, 4))
 x = np.linspace(90, 110, 1000)
 y = norm.pdf(x, mean_kpi, std_kpi)
